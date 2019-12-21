@@ -1,5 +1,7 @@
 package com.xwf.libjava.img;
 
+import net.sourceforge.tess4j.util.ImageHelper;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
@@ -73,7 +75,7 @@ public class PHash {
     /**
      * 计算灰度值
      *
-     * @param pixels
+     * @param pixel
      * @return
      */
     public static double computeGrayValue(int pixel) {
@@ -160,5 +162,15 @@ public class PHash {
 
     public static int compareImg(BufferedImage img1, BufferedImage img2) {
         return compareFingerPrint(toPhash(img1), toPhash(img2));
+    }
+
+    public static BufferedImage convertImage(BufferedImage image){
+        //按指定宽高创建一个图像副本
+        image = ImageHelper.getSubImage(image, 0, 0, image.getWidth(), image.getHeight());
+        //图像转换成灰度的简单方法 - 黑白处理
+        image = ImageHelper.convertImageToGrayscale(image);
+        //图像缩放 - 放大n倍图像
+        image = ImageHelper.getScaledInstance(image, image.getWidth() * 3,   image.getHeight() * 3);
+        return image;
     }
 }
