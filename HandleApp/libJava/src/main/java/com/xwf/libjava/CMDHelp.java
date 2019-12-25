@@ -7,7 +7,7 @@ public class CMDHelp {
 
     public void tap(int x, int y) {
         try {
-            process = Runtime.getRuntime().exec("cmd /c adb shell input tap " + x + " " + y);
+            process = Runtime.getRuntime().exec("adb shell input tap " + x + " " + y);
             Thread.sleep(100);
             process.waitFor();
         } catch (IOException | InterruptedException e) {
@@ -21,12 +21,14 @@ public class CMDHelp {
         }
     }
 
-    public void getScreenshot() {
+    public void getScreenshot(String path) {
         try {
-            process = Runtime.getRuntime().exec("cmd /c adb shell /system/bin/screencap -p /sdcard/screenshot.png");
-            Thread.sleep(800);
-            process = Runtime.getRuntime().exec("cmd /c adb pull /sdcard/screenshot.png /fileImg/screenshot.png");
-            Thread.sleep(800);
+            process = Runtime.getRuntime().exec("adb shell rm /sdcard/screenshot.png");
+            Thread.sleep(100);
+            process = Runtime.getRuntime().exec("adb shell /system/bin/screencap -p /sdcard/screenshot.png");
+            Thread.sleep(2000);
+            process = Runtime.getRuntime().exec("adb pull /sdcard/screenshot.png " + path);
+            Thread.sleep(400);
             process.waitFor();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

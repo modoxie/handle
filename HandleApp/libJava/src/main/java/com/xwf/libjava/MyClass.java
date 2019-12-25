@@ -39,6 +39,7 @@ public class MyClass {
             }
         }
         cmdHelp.destroy();
+        String path="E:\\git\\Handle\\HandleApp\\libJava\\src\\main\\res\\drawable";
 //        try {
 //            BufferedImage img = PHash.cutImage("c:/fileImg/screenshot.png", 0, 490, 1080, 220);
 //            BufferedImage t01 = ImageIO.read(new File("c:/fileImg/t01.png"));

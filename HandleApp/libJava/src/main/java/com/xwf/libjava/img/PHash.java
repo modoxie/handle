@@ -1,5 +1,6 @@
 package com.xwf.libjava.img;
 
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
@@ -73,7 +74,7 @@ public class PHash {
     /**
      * 计算灰度值
      *
-     * @param pixels
+     * @param pixel
      * @return
      */
     public static double computeGrayValue(int pixel) {
@@ -161,4 +162,5 @@ public class PHash {
     public static int compareImg(BufferedImage img1, BufferedImage img2) {
         return compareFingerPrint(toPhash(img1), toPhash(img2));
     }
+
 }
